@@ -80,4 +80,59 @@ echo $good_wei->getName()." ".$good_wei->getFinalPrice()."<br>";
 echo $good_piece->getName()." ".$good_piece->getFinalPrice()."<hr><h1>Доход:</h1>";
 echo $good_digit->getName()." ".$good_digit->getIncome()."<br>";
 echo $good_wei->getName()." ".$good_wei->getIncome()."<br>";
-echo $good_piece->getName()." ".$good_piece->getIncome();
+echo $good_piece->getName()." ".$good_piece->getIncome()."<br>";
+echo "<hr>";
+
+
+/**
+ * Дополнительное задание
+ */
+
+
+// <?php
+// class Singleton {
+// private static $instance; // Экземпляр объекта
+// // Защищаем от создания через new Singleton
+// private function __construct() { /* ... @return Singleton */ }
+// // Защищаем от создания через клонирование
+// private function __clone() { /* ... @return Singleton */ }
+// // Защищаем от создания через unserialize
+// private function __wakeup() { /* ... @return Singleton */ }
+// // Возвращает единственный экземпляр класса. @return Singleton
+// public static function getInstance() {
+// if ( empty(self::$instance) ) {
+// self::$instance = new self();
+// }
+// return self::$instance;
+// }
+// public function doAction() { }
+// }
+// /* Применение*/
+// Singleton::getInstance()->doAction();
+
+trait MyTrait {
+ private static $instance;
+ private function __construct() {}
+ private function __clone() {}
+ private function __wakeup() {}
+ public static function getInstance() {
+    if ( empty(self::$instance) ) {
+    self::$instance = new self();
+    }
+    return self::$instance;
+    }
+
+}
+
+
+class Singleton {
+use MyTrait;
+public function doAction() {
+    echo 'Singleton: doAction work';
+}
+}
+
+Singleton::getInstance()->doAction();
+
+
+
