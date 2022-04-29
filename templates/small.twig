@@ -1,0 +1,11 @@
+<html>
+  <head>
+</head>
+  <body>
+ <h1> {{title}} </h1>
+{% for img in images %}
+ <a href="?id={{img.id}}"><img src="public_html/img/small/{{img.title}}"></a>
+{% endfor %}
+
+  </body>
+</html>
