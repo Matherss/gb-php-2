@@ -1,3 +1,11 @@
+<?php
+require('./config.php');
+$db = new PDO("pgsql:host=$db_host;dbname=$db_dbname", $db_user, $db_password);
+$countQuery = "SELECT COUNT(*) FROM goods";
+$countResult = $db->query($countQuery);
+$count = $countResult->fetch();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +62,14 @@
     <button onclick="getMore()">Ещё</button>
     </div>
     <script>
+        let maxLimit = <?=$count[0]?>;
         let limit = 6;
+        document.querySelector('button').addEventListener('click',()=>{
+            if(maxLimit <= limit) {
+                document.querySelector('button').style.display = 'none';
+                document.querySelector('.header').textContent = 'Мышки (Все мышки загружены)'
+            }
+        })
         async function getMore() {
             let status = true;
             if(status) {
@@ -68,7 +83,9 @@
             }
           document.querySelector('.items__list').innerHTML = data;
           limit += 3;
+          
         }
+        
     </script>
 </body>
 </html>
