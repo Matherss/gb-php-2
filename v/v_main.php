@@ -1,10 +1,15 @@
 <?php
-/**
- * �������� ������
- * ===============
- * $title - ���������
- * $content - HTML ��������
- */
+session_start();
+if($_SESSION['pages'] >= 5) {
+	for ($i=1; $i<5; $i++)
+	{
+			$_SESSION['pages'][$i-1] = $_SESSION['pages'][$i];
+	}
+	$_SESSION['pages'][4] = $lp;
+} else {
+	$_SESSION['pages'][] = $lp;
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

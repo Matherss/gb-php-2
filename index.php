@@ -1,10 +1,13 @@
 <?php
 
+
 spl_autoload_register(function ($class) {
     include 'c/' . $class . '.php';
 });
 
 //site.ru/index.php?act=auth&c=User;
+
+
 
 $action = "action_";
 $action .=(isset($_GET['act'])) ? $_GET['act'] : 'index';
