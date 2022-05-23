@@ -25,7 +25,7 @@ if($_SESSION['pages'] >= 5) {
 	</div>
 	
 	<div id="menu">
-		<a href="index.php">text</a> | 
+		<a href="index.php">Главная</a> | 
 		
 		<?php if($_COOKIE['login'] === null) {
 			echo '<a href="index.php?c=user&act=auth">Login</a> | <a href="index.php?c=user&act=register">Register</a>';
